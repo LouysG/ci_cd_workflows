@@ -1,0 +1,27 @@
+# =========================================================
+# .pre-commit-config.yaml
+# Purpose: Run Ruff (formatter, linter, import sorter)
+#          and basic hygiene checks before every commit.
+# =========================================================
+
+repos:
+  # Ruff (linter, formatter, import sorter)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.7.0  # Use the latest stable Ruff version
+    hooks:
+      - id: ruff
+        name: Ruff Linter and Import Sorter
+        args: [--fix]      # Automatically apply safe fixes
+      - id: ruff-format
+        name: Ruff Formatter
+        args: []           # No args needed; uses pyproject.toml
+
+  # General Code Hygiene Hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer        # Ensures newline at EOF
+      - id: trailing-whitespace      # Removes stray spaces
+      - id: check-merge-conflict     # Fails if merge markers remain
+      - id: check-yaml               # Validates YAML files
+      - id: check-json               # Validates JSON files

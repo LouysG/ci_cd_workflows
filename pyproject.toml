@@ -1,0 +1,44 @@
+# =========================================================
+# pyproject.toml
+# =========================================================
+
+# ---------------
+# Build System (required by PEP 518)
+# ---------------
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+# ---------------
+# Tool Configurations
+# ---------------
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+# Enable useful rule families:
+# E/F = pycodestyle/pyflakes errors
+# I = import sorting (replaces isort)
+# B = bugbear (common pitfalls)
+# UP = pyupgrade (modern syntax)
+# SIM = simplify (redundant constructs)
+lint.select = ["E", "F", "I", "B", "UP", "SIM"]
+lint.ignore = ["E501"]  # line length handled by formatter
+fix = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+docstring-code-format = true
+
+[tool.pytest.ini_options]
+addopts = "-ra -q --disable-warnings"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true
