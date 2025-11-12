@@ -28,7 +28,7 @@ jobs:
 
       - name: Check formatting (ruff format)
         run: |
-          ruff format --check src tests
+          ruff format --check --diff src tests
 
   lint:
     name: Lint Code and Imports
