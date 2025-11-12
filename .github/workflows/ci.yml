@@ -1,7 +1,5 @@
 name: shared-ci
 on:
-  push: # 👈 temporary, so it can actually run once
-    branches: [ main ]
   workflow_call:
     inputs:
       python-version:
